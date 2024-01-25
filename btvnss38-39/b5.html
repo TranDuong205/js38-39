@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Tracker App</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #mainCup {
+      width: 200px;
+      height: 200px;
+      background-color: #3498db;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+      margin-right: 20px;
+    }
+
+    #smallCups {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .smallCup {
+      width: 40px;
+      height: 40px;
+      background-color: #3498db;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #remainingWater {
+      font-size: 24px;
+      color: #3498db;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="mainCup">
+  <div id="remainingWater">2L</div>
+</div>
+
+<div id="smallCups">
+  <div class="smallCup" onclick="pourWater(12.5)"></div>
+  <div class="smallCup" onclick="pourWater(12.5)"></div>
+  <div class="smallCup" onclick="pourWater(12.5)"></div>
+  <div class="smallCup" onclick="pourWater(12.5)"></div>
+  <div class="smallCup" onclick="pourWater(12.5)"></div>
+  <div class="smallCup" onclick="pourWater(12.5)"></div>
+  <div class="smallCup" onclick="pourWater(12.5)"></div>
+  <div class="smallCup" onclick="pourWater(12.5)"></div>
+</div>
+
+<script>
+  let remainingWaterPercentage = 100;
+
+  function pourWater(percentage) {
+    remainingWaterPercentage -= percentage;
+    if (remainingWaterPercentage < 0) {
+      remainingWaterPercentage = 0;
+    }
+
+    updateUI();
+  }
+
+  function updateUI() {
+    const mainCup = document.getElementById('mainCup');
+    const remainingWaterElement = document.getElementById('remainingWater');
+
+    mainCup.style.height = `${remainingWaterPercentage}%`;
+    remainingWaterElement.textContent = `${(remainingWaterPercentage * 2 / 100).toFixed(2)}L`;
+  }
+</script>
+
+</body>
+</html>

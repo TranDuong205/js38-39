@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fading Image</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #fadingImage {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      filter: blur(20px);
+      opacity: 0;
+      transition: opacity 2s ease-in-out, filter 2s ease-in-out;
+    }
+
+    #overlay {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 5em;
+      color: white;
+      opacity: 1;
+      transition: opacity 2s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+
+<img id="fadingImage" src="https://i.pinimg.com/736x/61/9e/1a/619e1a8556b54b7a5b1622cc3382dbdb.jpg" alt="Fading Image">
+<div id="overlay">0%</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const fadingImage = document.getElementById('fadingImage');
+    const overlay = document.getElementById('overlay');
+    setTimeout(function() {
+      fadingImage.style.opacity = 1;
+      fadingImage.style.filter = 'blur(0px)';
+    }, 1000);
+    setTimeout(function() {
+      overlay.style.opacity = 0;
+    }, 2000); 
+  });
+</script>
+
+</body>
+</html>

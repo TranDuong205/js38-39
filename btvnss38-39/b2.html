@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Bar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .search-container {
+      position: relative;
+      width: 200px;
+      transition: width 0.3s ease-in-out;
+    }
+
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 10px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .search-bar {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      display: none;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="search-container">
+  <div class="search-icon" onclick="toggleSearchBar()">
+    <img src="search-icon.png" alt="Search Icon" width="20">
+  </div>
+  <input type="text" class="search-bar" placeholder="Search...">
+</div>
+
+<script>
+  let searchBarVisible = false;
+
+  function toggleSearchBar() {
+    const searchContainer = document.querySelector('.search-container');
+    const searchIcon = document.querySelector('.search-icon');
+    const searchBar = document.querySelector('.search-bar');
+
+    if (!searchBarVisible) {
+      searchContainer.style.width = '300px';
+      searchIcon.style.left = '260px';
+      searchBar.style.display = 'block';
+      searchBar.focus();
+    } else {
+      searchContainer.style.width = '200px';
+      searchIcon.style.left = '10px';
+      searchBar.style.display = 'none';
+    }
+
+    searchBarVisible = !searchBarVisible;
+  }
+</script>
+
+</body>
+</html>
